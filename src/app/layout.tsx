@@ -3,6 +3,7 @@ import "./globals.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/700.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Project120 Health Platform",
@@ -16,19 +17,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.png" type="image/png" />
+      </head>
       <body className="font-mono antialiased">
         {/* Header navigation bar moved from homepage for global use */}
-        <nav className="w-full flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-black/80 backdrop-blur sticky top-0 z-10">
-          {/* Left: Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center font-bold text-lg select-none">P</div>
-            <Link href="/" className="ml-2 font-semibold tracking-wide text-lg hidden sm:inline hover:underline underline-offset-4">Project120</Link>
-          </div>
-          {/* Center: Nav Links */}
-          <div className="hidden md:flex gap-8 text-base font-medium">
-            <Link href="/how-it-works" className="hover:underline underline-offset-4">How it works</Link>
-            <Link href="/blood-tests" className="hover:underline underline-offset-4">Blood tests</Link>
-            <Link href="/contact" className="hover:underline underline-offset-4">Contact</Link>
+        <nav className="w-full flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-black/80 backdrop-blur sticky top-0 z-10 overflow-visible" style={{minHeight: '64px'}}>
+          {/* Left: Logo + Nav Links */}
+          <div className="flex items-center gap-8">
+            <Link href="/" className="flex items-center">
+              <Image src="/logo.png" alt="Project120 Logo" width={200} height={200} className="max-h-[44px] w-auto object-contain" priority />
+            </Link>
+            <div className="hidden md:flex gap-8 text-base font-medium">
+              <Link href="/how-it-works" className="hover:underline underline-offset-4">How it works</Link>
+              <Link href="/blood-tests" className="hover:underline underline-offset-4">Blood tests</Link>
+              <Link href="/contact" className="hover:underline underline-offset-4">Contact</Link>
+            </div>
           </div>
           {/* Right: Book a test & Login */}
           <div className="flex items-center gap-4">

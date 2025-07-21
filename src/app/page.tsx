@@ -231,31 +231,60 @@ export default function Home() {
               icon: <IdentificationIcon className="w-8 h-8 text-black dark:text-white" />, name: "Maria, 29",
               text: "Seeing my blood results and lifestyle data in one place made it easy to take control of my health. Highly recommend!",
             },
+            {
+              icon: <UserIcon className="w-8 h-8 text-black dark:text-white" />, name: "Ben, 47",
+              text: "The AI recommendations are spot on. I’ve made real, lasting changes to my sleep and nutrition.",
+            },
+            {
+              icon: <UserCircleIcon className="w-8 h-8 text-black dark:text-white" />, name: "Elena, 38",
+              text: "I love how easy it is to track my progress and set new goals. The platform is intuitive and motivating.",
+            },
+            {
+              icon: <UserGroupIcon className="w-8 h-8 text-black dark:text-white" />, name: "James, 56",
+              text: "My doctor was impressed with the detailed reports. Project120 makes health optimization simple.",
+            },
+            {
+              icon: <IdentificationIcon className="w-8 h-8 text-black dark:text-white" />, name: "Sophie, 31",
+              text: "The community and support are fantastic. I feel empowered to take charge of my health journey.",
+            },
           ];
           const [active, setActive] = useState(0);
           const visible = 4;
+          const maxActive = testimonials.length - visible;
           const getVisible = () => {
             if (testimonials.length <= visible) return testimonials;
-            if (active === 0) return testimonials.slice(0, visible);
-            if (active > testimonials.length - visible) return testimonials.slice(-visible);
             return testimonials.slice(active, active + visible);
           };
-          const canGoLeft = active > 0;
-          const canGoRight = active < testimonials.length - visible;
+          const canGoLeft = testimonials.length > visible;
+          const canGoRight = testimonials.length > visible;
+          const handleLeft = () => {
+            if (active === 0) {
+              setActive(maxActive);
+            } else {
+              setActive(active - 1);
+            }
+          };
+          const handleRight = () => {
+            if (active === maxActive) {
+              setActive(0);
+            } else {
+              setActive(active + 1);
+            }
+          };
           return (
             <div className="w-full flex items-center relative">
               <button
                 className="hidden md:flex w-14 h-14 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition absolute left-0 top-1/2 -translate-y-1/2 z-20"
-                onClick={() => setActive(Math.max(0, active - 1))}
+                onClick={handleLeft}
                 aria-label="Previous testimonial"
                 disabled={!canGoLeft}
                 style={{ left: 0 }}
               >
                 <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke="#111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </button>
-              <div className="flex-1 flex flex-col md:flex-row justify-between items-stretch gap-16 md:gap-16 mx-24">
+              <div className="flex-1 flex flex-col md:flex-row justify-between items-stretch gap-16 md:gap-16 mx-24 h-[260px]">
                 {getVisible().map((t, i) => (
-                  <div key={t.name} className="flex-1 flex flex-col justify-between px-8 md:px-12 relative min-w-[260px] max-w-[340px]">
+                  <div key={t.name} className="flex-1 flex flex-col justify-between px-8 md:px-12 relative min-w-[260px] max-w-[340px] h-[260px]">
                     <span className="text-5xl text-gray-200 dark:text-gray-800 absolute -top-8 left-0 select-none">“</span>
                     <span className="text-gray-700 dark:text-gray-300 text-base leading-relaxed block mb-8 mt-8">{t.text}</span>
                     <div className="flex items-center gap-2 mt-2">
@@ -267,7 +296,7 @@ export default function Home() {
               </div>
               <button
                 className="hidden md:flex w-14 h-14 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition absolute right-0 top-1/2 -translate-y-1/2 z-20"
-                onClick={() => setActive(Math.min(testimonials.length - visible, active + 1))}
+                onClick={handleRight}
                 aria-label="Next testimonial"
                 disabled={!canGoRight}
                 style={{ right: 0 }}
