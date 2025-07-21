@@ -21,28 +21,6 @@ import {
 export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-mono flex flex-col items-center px-0">
-      {/* Top Navigation Bar */}
-      <nav className="w-full flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-black/80 backdrop-blur sticky top-0 z-10">
-        {/* Left: Logo */}
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center font-bold text-lg select-none">P</div>
-          <span className="ml-2 font-semibold tracking-wide text-lg hidden sm:inline">Project120</span>
-        </div>
-        {/* Center: Nav Links */}
-        <div className="hidden md:flex gap-8 text-base font-medium">
-          <a href="#how-it-works" className="hover:underline underline-offset-4">How it works</a>
-          <a href="#blood-tests" className="hover:underline underline-offset-4">Blood tests</a>
-          <a href="#contact" className="hover:underline underline-offset-4">Contact</a>
-        </div>
-        {/* Right: Book a test & Login */}
-        <div className="flex items-center gap-4">
-          <a href="#book-test" className="px-5 py-2 rounded-full bg-black text-white dark:bg-white dark:text-black font-semibold border border-black dark:border-white hover:bg-gray-900 dark:hover:bg-gray-200 transition">Book a test</a>
-          <button className="ml-2 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition" aria-label="Login">
-            <UserIcon className="w-6 h-6" />
-          </button>
-        </div>
-      </nav>
-
       {/* Hero Section - Two Column Layout */}
       <section className="w-full max-w-5xl py-20 flex flex-col md:flex-row items-start gap-12 px-4 relative">
         {/* Left: Text (extreme left alignment) */}
@@ -335,31 +313,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer Section */}
-      <footer className="w-full bg-black text-white border-t border-gray-800 mt-24 py-12 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0">
-          {/* Logo/Brand */}
-          <div className="flex items-center gap-2 mb-6 md:mb-0">
-            <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center font-bold text-lg select-none">P</div>
-            <span className="ml-2 font-semibold tracking-wide text-lg">Project120</span>
-          </div>
-          {/* Navigation */}
-          <nav className="flex flex-col md:flex-row gap-4 md:gap-8 items-center text-sm">
-            <a href="#how-it-works" className="hover:underline underline-offset-4 text-white">How it works</a>
-            <a href="#blood-tests" className="hover:underline underline-offset-4 text-white">Blood tests</a>
-            <a href="#contact" className="hover:underline underline-offset-4 text-white">Contact</a>
-          </nav>
-          {/* Legal */}
-          <nav className="flex flex-col md:flex-row gap-4 md:gap-8 items-center text-sm text-gray-400">
-            <a href="#privacy" className="hover:underline underline-offset-4 text-gray-400">Privacy Policy</a>
-            <a href="#terms" className="hover:underline underline-offset-4 text-gray-400">Terms of Service</a>
-          </nav>
-        </div>
-        <div className="max-w-6xl mx-auto mt-8 text-center text-xs text-gray-500">
-          &copy; {new Date().getFullYear()} Project120. All rights reserved.
-        </div>
-      </footer>
     </div>
   );
 }
