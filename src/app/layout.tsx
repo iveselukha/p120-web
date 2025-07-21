@@ -4,6 +4,7 @@ import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/700.css";
 import Link from "next/link";
 import Image from "next/image";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
   title: "Project120 Health Platform",
@@ -25,7 +26,7 @@ export default function RootLayout({
         <nav className="w-full flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-black/80 backdrop-blur sticky top-0 z-10 overflow-visible" style={{minHeight: '64px'}}>
           {/* Left: Logo + Nav Links */}
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center cursor-pointer">
               <Image src="/logo.png" alt="Project120 Logo" width={200} height={200} className="max-h-[44px] w-auto object-contain" priority />
             </Link>
             <div className="hidden md:flex gap-8 text-base font-medium">
@@ -37,11 +38,8 @@ export default function RootLayout({
           {/* Right: Book a test & Login */}
           <div className="flex items-center gap-4">
             <Link href="/test-selection" className="px-5 py-2 rounded-full bg-black text-white dark:bg-white dark:text-black font-semibold border border-black dark:border-white hover:bg-gray-900 dark:hover:bg-gray-200 transition">Book a test</Link>
-            <Link href="/dashboard" className="ml-2 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition" aria-label="Login">
-              {/* Use a generic user icon for login */}
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 1115 0v.75a.75.75 0 01-.75.75h-13.5a.75.75 0 01-.75-.75v-.75z" />
-              </svg>
+            <Link href="/login" className="ml-2 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition" aria-label="Login">
+              <UserCircleIcon className="w-8 h-8" />
             </Link>
           </div>
         </nav>
